@@ -1,0 +1,50 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pig Latin translator</title>
+</head>
+<body>
+
+<script>
+    phrase = prompt("Enter a phrase");
+    document.write("You entered - ", phrase);
+
+    // Your pig-latin translation code here
+    // Joshua Meyers
+    // CIS 126
+    // Oct 1, 2024
+    
+    //Create an array with vowels
+    const vowels = ["a", "e", "i", "o", "u"];
+    //Create an array without vowels
+    const noVowels = Array.from("bcdfghjklmnpqrstvwxyz")
+    //Get first and second letters of phrase
+    let firstLetter = phrase.slice(0,1);
+    let secondLetter = phrase.slice(1,2);
+    //Convert first and second letters of phrase to lowercase
+    firstLetter = firstLetter.toLowerCase();
+    secondLetter = secondLetter.toLowerCase();
+    //console.log(firstLetter);
+    //console.log(secondLetter);
+    //console.log(vowels.includes(firstLetter));
+    //console.log(phrase + "way");
+    
+    if(vowels.includes(firstLetter)){
+        document.write("In pig latin: " + phrase + "way");
+    }
+    else if(noVowels.includes(firstLetter) && noVowels.includes(secondLetter)){
+        document.write("In pig latin: " + phrase.slice(2) + phrase.slice(0,2) + "ay");
+    }
+    else if(noVowels.includes(firstLetter)){
+        document.write("In pig latin: " + phrase.slice(1) + phrase.slice(0,1) + "ay");
+    }
+    else{
+        document.write("Something went wrong")
+    }
+</script>
+
+</body>
+</html>

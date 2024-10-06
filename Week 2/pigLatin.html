@@ -17,35 +17,48 @@
     // CIS 126
     // Oct 1, 2024
     
-    //Create an array with vowels
-    const vowels = ["a", "e", "i", "o", "u"];
+    // Convert phrase to lowercase
+    phrase = phrase.toLowerCase();
+
+    // split the phrase variable into an array
+    const phraseArray = phrase.split(" ");
+    
+    // create an array with vowels
+    const vowels = Array.from("aeiou");
+
+    
     //Create an array without vowels
     const noVowels = Array.from("bcdfghjklmnpqrstvwxyz")
-    //Get first and second letters of phrase
-    let firstLetter = phrase.slice(0,1);
-    let secondLetter = phrase.slice(1,2);
-    //Convert first and second letters of phrase to lowercase
-    firstLetter = firstLetter.toLowerCase();
-    secondLetter = secondLetter.toLowerCase();
+    // add a new line
+    document.write("<br>")
 
-    // If first letter is included in vowels array, write phrase and append "way" to the end
-    if(vowels.includes(firstLetter)){
-        document.write("In pig latin: " + phrase + "way");
-    }
-    // If first and second letter are in the noVowels array, write phrase from 3rd character forward,
-    // then add the first two characters to the end, and then append "ay" after that
-    else if(noVowels.includes(firstLetter) && noVowels.includes(secondLetter)){
-        document.write("In pig latin: " + phrase.slice(2) + phrase.slice(0,2) + "ay");
-    }
-    // If the first letter is in the noVowels array, write phrase from 2nd character foward,
-    // then add the first charcter to the end, and then append "ay"
-    else if(noVowels.includes(firstLetter)){
-        document.write("In pig latin: " + phrase.slice(1) + phrase.slice(0,1) + "ay");
-    }
-    // If none of the above work, write error
-    else{
-        document.write("Something went wrong");
-    }
+    // Go through each item in phraseArray and assign to variable word. Isolate 1st and 2nd
+    // characters and assign them to varables firstLetter and secondLetter
+    phraseArray.forEach(element => {
+        let word = element;
+        let firstLetter = word.slice(0,1);
+        let secondLetter = word.slice(1,2);
+
+        // If first letter is included in vowels array, write word and append "way" to the end
+        if(vowels.includes(firstLetter)){
+            document.write(word + "way ");
+        }
+        // If first and second letter are in the noVowels array, write word from 3rd character forward,
+        // then add the first two characters to the end, and then append "ay" after that
+        else if(noVowels.includes(firstLetter) && noVowels.includes(secondLetter)){
+            document.write(word.slice(2) + word.slice(0,2) + "ay ");
+        }
+        // If the first letter is in the noVowels array, write word from 2nd character foward,
+        // then add the first charcter to the end, and then append "ay"
+        else if(noVowels.includes(firstLetter)){
+            document.write(word.slice(1) + word.slice(0,1) + "ay ");
+        }
+        // If none of the above work, write error
+        else{
+            document.write("Something went wrong");
+        }
+    });
+    
 </script>
 
 </body>

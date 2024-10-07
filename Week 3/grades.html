@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student grades</title>
+</head>
+<body>
+
+<script>
+    let grades = "jim|25, sue|32, mary|34, ann|22, ted|28, frank|15, lisa|19, mike|30, ahn|26, vishaya|27";
+
+    // Your code here
+
+    //Joshua Meyers
+    //CIS 126
+    // Oct 7 2024
+
+
+    const student_grades = grades.split(", ");
+    console.log(student_grades);
+
+    student_grades.forEach(element => {
+        let student_name_grade = element;
+        const student_name_grade_array = student_name_grade.split("|");
+        document.write(student_name_grade_array[0], '&nbsp;&nbsp;&nbsp;', student_name_grade_array[1], "<br>");
+    });
+</script>
+
+</body>
+</html>

@@ -15,15 +15,64 @@
     //CIS 126
     // Oct 7 2024
 
-
+    // Split string into an array with separate entries for each student
     const student_grades = grades.split(", ");
-    console.log(student_grades);
 
-    student_grades.forEach(element => {
-        let student_name_grade = element;
-        const student_name_grade_array = student_name_grade.split("|");
-        document.write(student_name_grade_array[0], '&nbsp;&nbsp;&nbsp;', student_name_grade_array[1], "<br>");
-    });
+    // Sort students alphabetically
+    student_grades.sort();
+
+    // Create separate arrays for students and scores
+    // Multi-dimensal array would work better??
+    const students = [];
+    const grade = [];
+
+    // Variables for total grade accumilation and storing total number of students
+    let total_grade = 0
+    let num_students = student_grades.length;
+    // console.log(num_students);
+
+    // For each item in student_grades array:
+    student_grades.forEach(Element => {
+        
+        //split student name from grades and assign to variables name and score
+        const temp = Element.split("|");
+        let name = temp[0];
+        let score = temp[1];
+
+        // Extract first letter of name, capitalize it, and replace in the name variable
+        let firstLetter = name.slice(0,1);
+        firstLetter = firstLetter.toUpperCase();
+        name = firstLetter + name.slice(1);
+
+        // convert score into an integer
+        score = parseInt(score);
+
+        // add student name and grade to students and grade arrays
+        students.push(name);
+        grade.push(score);
+
+        // write out name and score
+        document.write(name + ": \t" + score + "<br>");
+
+        // add score to total_grade variable
+        total_grade += score;
+    })
+    
+    // create variables for lowest, highest, and average grades
+    let sorted_grade = grade.sort();
+    let lowest_grade = sorted_grade[0];
+    let highest_grade = sorted_grade[sorted_grade.length - 1];
+    let avg_grade = total_grade / num_students;
+
+    // Write out total number of students, lowest, highest, and average grades
+    document.write("Total number of students: " + num_students +"<br>");
+    document.write("Lowest grade: " + lowest_grade + "<br>");
+    document.write("Highest grade: " + highest_grade + "<br>");
+    document.write("Average grade: " + avg_grade);
+
+    
+
+    
 </script>
 
 </body>

@@ -55,21 +55,34 @@
     return meets_reqs;
     }
 
-    let firstname = myForm.firstname.value; // get text of firstname field
-    let lastname = myform.lastname.value;
-    let password = myform.password.value;
+    let firstname = form1.firstname.value; // get text of firstname field
+    let lastname = form1.lastname.value;
+    let password = form1.password.value;
     /* Form validation code goes here
     */
     let pass_reqs_met = validatePassword(password)
     console.log(pass_reqs_met);
+    if (firstname.length == 0){
+      document.write("<p>first name field MUST be completed</p>");
+    }
+    else{
+      document.write("<p>First name field is valid")
+    }
+    if (lastname.length == 0){
+      document.write("<p>last name field MUST be completed</p>");
+    }
+    else{
+      document.write("<p>Last name field is valid<p>")
+    }
 
 
     // use this syntax to update 'message' DIV with appropriate wording
-    $("#message").html(pass_reqs_met);
+    $("#message").html("<p>Please enter your first and last name, and a password at least 8 characters long, including at least 1 upper and lower case letter.</p>");
 
     return false; // prevent page reload
   }
   validateForm();
+  
 
 </script>
 

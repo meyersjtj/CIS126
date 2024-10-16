@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+
+<h1>Functions & validation</h1>
+
+<form id="form1" action="#" onsubmit="return validateForm(this);">
+  first name: <input type="text" name="firstname"><br>
+  last name: <input type="text" name="lastname"><br>
+  password: <input type="text" name="password"><br>
+
+  <button >Check</button>
+</form>
+
+<hr><div id="message"></div>
+
+<script>
+
+  const validateForm = (myForm) => {
+
+    // add validatePassword function here
+    const validatePassword = (password) => {
+    let pass_length = 0;
+    let upper_case_count = 0;
+    let lower_case_count = 0;
+    let meets_reqs = false;
+    lower_case_alpha = "abcdefghijklmnopqrstuvwxyz".split("");
+    console.log(lower_case_alpha);
+    upper_case_alpha = "abcdefghijklmnopqrstuvwxyz".toUpperCase().split("");
+    console.log(upper_case_alpha);
+    
+    const pass_array = password.split('');
+    for (let n in pass_array){
+        if (lower_case_alpha.includes(pass_array[n])){
+            lower_case_count += 1;
+        }
+        else if (upper_case_alpha.includes(pass_array[n])){
+            upper_case_count += 1;
+        }
+    }
+    console.log("Lower case characters: ", lower_case_count);
+    console.log("Upper case characters: ", upper_case_count);
+    console.log("Password length: ", pass_array.length);
+
+    if (pass_array.length >= 8 && upper_case_count > 0 && lower_case_count > 0) {
+        meets_reqs = true
+        document.write("Meets password requirements");
+    }
+    else {
+        document.write("Does NOT meet password requirements");
+    }
+    return meets_reqs;
+    }
+
+    let firstname = myForm.firstname.value; // get text of firstname field
+    let lastname = myform.lastname.value;
+    let password = myform.password.value;
+    /* Form validation code goes here
+    */
+    let pass_reqs_met = validatePassword(password)
+    console.log(pass_reqs_met);
+
+
+    // use this syntax to update 'message' DIV with appropriate wording
+    $("#message").html(pass_reqs_met);
+
+    return false; // prevent page reload
+  }
+  validateForm();
+
+</script>
+
+</body>
+</html> 

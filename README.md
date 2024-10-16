@@ -1,2 +1,2 @@
 # PCC
-Perce College Computer science
+Pierce College - Intro to JavaScript

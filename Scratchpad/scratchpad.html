@@ -1,9 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
+  <script
+          src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+          crossorigin="anonymous"></script>
+</head>
+<body>
 
-    </head>
-    <body>
-        <script type="text/javascript" src="script.js"></script>
-    </body>
+<h1>Robo Dealer</h1>
+
+  <button onclick="dealHand();">Deal Hand</button>
+
+<hr><div id="card_hand"></div>
+
+<script>
+
+  /* define Card object and deck of cards here */
+    class Card{
+        constructor(value, suite){
+        this.value = value;
+        this.suite = suite;
+        }
+    }
+    let card_values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace'];
+    let card_suites = ['spades', 'clubs', 'diamonds', 'hearts'];
+    let deck = [];
+
+    for (let i = 0; i < card_values.length; i++) {
+        for (let x = 0; x < card_suites.length; x++) {
+            let temp_card = new Card (card_values[i], card_suites[x]);
+            deck.push(temp_card);
+        }
+    }
+
+    const dealHand = () => {
+
+    /* code to deal a card hand goes here */
+        let hand = [];
+        while (hand.length < 5) {
+            let x = Math.floor(Math.random() * 52);
+            if (!hand.some(card => card.value === deck[x].value && card.suite === deck[x].suite)){
+                hand.push({ value: deck[x].value, suite: deck[x].suite });
+            }
+        }
+    // update 'card_hand' DIV with appropriate information
+    $("#card_hand").html("Button clicked");
+
+    return false; // prevent page reload
+  }
+
+</script>
+
+</body>
 </html>

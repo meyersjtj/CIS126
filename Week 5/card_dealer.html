@@ -29,26 +29,32 @@
 	
 	for (let i = 0; i < card_values.length; i++){
 		for (let x = 0; x < card_suites.length; x++){
-			let temp_card = new Card (card_values[i], card_suites[x])
-			deck.push(temp_card)
+			let temp_card = new Card (card_values[i], card_suites[x]);
+			deck.push(temp_card);
 		}
 	}
 	console.log(deck);
 
 	const dealHand = () => {
-    let hand = [];
-		/* code to deal a card hand goes here */
-    while (hand.length < 5){
-      let x = Math.floor(Math.random() * 52);
-      if (hand.includes != x){
-        hand.push(deck.value[x], deck.suite[x]);
-      }
+		let hand = [];
+			/* code to deal a card hand goes here */
+		while (hand.length < 5) {
+			let x = Math.floor(Math.random() * 52);
+			if (!hand.some(card => card.value === deck[x].value && card.suite === deck[x].suite)){
+				hand.push({ value: deck[x].value, suite: deck[x].suite });
+			}
       
     }
     
 		// update 'card_hand' DIV with appropriate information
-		$("#card_hand").html("Button clicked");
-    document.write('<p>-', deck.value[hand[0]], 'of', deck.suite[hand[0]]);
+		$("#card_hand").html(
+			'<p>-' + hand[0].value + ' of ' + hand[0].suite + '</p>' +
+			'<p>-' + hand[1].value + ' of ' + hand[1].suite + '</p>' +
+			'<p>-' + hand[2].value + ' of ' + hand[2].suite + '</p>' +
+			'<p>-' + hand[3].value + ' of ' + hand[3].suite + '</p>' +
+			'<p>-' + hand[4].value + ' of ' + hand[4].suite + '</p>'
+		);
+    
 		return false; // prevent page reload
 	}
 

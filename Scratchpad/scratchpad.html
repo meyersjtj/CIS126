@@ -1,10 +1,12 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html>
-  <div class="output"></div>
+  <body>
+    <div id="one" class="colors">orange</div>
+    <div id="two" class="colors">blue</div>
+    <div id="three" class="colors">green</div>
+  </body>
   <script>
-    const eles = document.querySelector('.output');
-    eles.textContent = 'Hello World';
-    classList.add('red');
-    console.log(eles);
+    console.log(document.getElementById("two"));
+    console.log(document.getElementsByClassName("colors"));
   </script>
 </html>

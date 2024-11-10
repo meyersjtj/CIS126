@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chapter 11.1 Practice Exercise</title>
+  </head>
+  <body>
+    <script>
+      /* Within a simple HTML document, set up a Boolean value variable to use that
+            will toggle the color modes.*/
+      let darkMode = true;
+
+      /* Use window.onclick to set up a function that outputs a message in the
+            console when clicked. You can use the value of the Boolean variable. */
+      window.onclick = function () {
+        if (darkMode == true) {
+          document.body.style.backgroundColor = "black";
+          document.body.style.color = "white";
+          darkMode = true;
+        } else {
+          document.body.style.backgroundColor = "white";
+          document.body.style.color = "black";
+          darkMode = false;
+        }
+      };
+    </script>
+  </body>
+</html>

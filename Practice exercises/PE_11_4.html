@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Practice exercise 11.4</title>
+	</head>
+	<body>
+		<div class="div1"></div>
+		<script>
+			// select element using its class name
+			let object = document.querySelector(".div1");
+
+			// Update the content of the element to say "Hello, world"
+			object.innerHTML = "Hello, world!";
+
+			// Using the style properties of the element, update the height and width, then
+			// add a default background color to it.
+			object.style.height = "100px";
+			object.style.width = "100px";
+			object.style.backgroundColor = "lightblue";
+
+			// Create a function to handle two arguments, the first being a color value as a
+			//string and the second being the event object of the trigger.
+			function changeColor(el, color) {
+				// In the function, output the color value to the console, and for the event,
+				// output the event type to the console.
+				el.style.backgroundColor = color;
+				console.log(color);
+				console.log(event.type);
+			}
+
+			/* Add event listeners to the element: mousedown, mouseover, mouseout, and
+			mouseup. For each of these events, send two arguments to the function that
+			you created: a color value and the event object. */
+			object.addEventListener("mousedown", function () {
+				changeColor(this, "green");
+			});
+			object.addEventListener("mouseover", function () {
+				changeColor(this, "red");
+			});
+			object.addEventListener("mouseout", function () {
+				changeColor(this, "yellow");
+			});
+			object.addEventListener("mouseup", function () {
+				changeColor(this, "darkblue");
+			});
+		</script>
+	</body>
+</html>
